@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ابزار تغییر رزولوشن تصویر</title>
+    <!-- لود فونت وزیرمتن (Vazirmatn) از CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <style>
+        /* ========================================
+           CSS اصلی برنامه - طراحی مدرن و واکنش‌گرا
+           فونت: Vazirmatn, Tahoma, Arial, sans-serif
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: #333;
+            direction: rtl;
+            padding: 20px 10px;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        /* کانتینر اصلی با عرض محدود و متمرکز - فقط ابزار اصلی */
+        .main-container {
+            width: 100%;
+            max-width: 850px;
+            background: #ffffff;
+            border-radius: 24px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.08);
+            padding: 35px 30px;
+            margin: 20px 0 15px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        /* هدر و عنوان */
+        .header {
+            text-align: center;
+            margin-bottom: 5px;
+        }
+
+        .header h1 {
+            font-size: 26px;
+            color: #1e2a3a;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+        }
+
+        .header p {
+            color: #5a6a7e;
+            font-size: 15px;
+            margin-top: 4px;
+            font-weight: 400;
+        }
+
+        /* بخش آپلود (درگ‌اند‌دراپ) - بدون آیکون اضافی */
+        .upload-area {
+            border: 3px dashed #b0bec5;
+            border-radius: 18px;
+            padding: 45px 25px;
+            text-align: center;
+            background: #fafcfd;
+            transition: all 0.25s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .upload-area:hover,
+        .upload-area.dragover {
+            border-color: #1976d2;
+            background: #eef3fa;
+            transform: translateY(-2px);
+        }
+
+        .upload-area .upload-text {
+            font-size: 19px;
+            color: #1e2a3a;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .upload-area .upload-hint {
+            font-size: 14px;
+            color: #6b7b8d;
+            margin-bottom: 22px;
+            line-height: 1.8;
+        }
+
+        /* دکمه اصلی آپلود - ساده، بزرگ و فارسی */
+        .file-input-label {
+            display: inline-block;
+            background: #1976d2;
+            color: white;
+            padding: 14px 36px;
+            border-radius: 40px;
+            font-size: 17px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 8px 20px rgba(25, 118, 210, 0.2);
+            border: none;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            letter-spacing: 0;
+        }
+
+        .file-input-label:hover {
+            background: #1565c0;
+            box-shadow: 0 10px 24px rgba(21, 101, 192, 0.25);
+        }
+
+        /* مخفی کردن input file به شکلی که در موبایل هم کار کند */
+        .file-input-hidden {
+            position: absolute;
+            opacity: 0;
+            width: 0.1px;
+            height: 0.1px;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        /* بخش لینک مستقیم */
+        .url-section {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            align-items: center;
+            background: #f4f6f8;
+            padding: 16px 20px;
+            border-radius: 14px;
+            border: 1px solid #e1e6eb;
+        }
+
+        .url-section label {
+            font-weight: 600;
+            color: #1e2a3a;
+            white-space: nowrap;
+            font-size: 15px;
+        }
+
+        .url-section input {
+            flex: 1 1 220px;
+            padding: 12px 16px;
+            border: 2px solid #dde1e6;
+            border-radius: 10px;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            font-size: 14px;
+            transition: border 0.2s;
+            background: white;
+        }
+
+        .url-section input:focus {
+            border-color: #1976d2;
+            outline: none;
+        }
+
+        .url-section button {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            font-size: 14px;
+            transition: background 0.2s;
+            white-space: nowrap;
+        }
+
+        .url-section button:hover {
+            background: #1b5e20;
+        }
+
+        /* بخش تنظیمات رزولوشن */
+        .resolution-panel {
+            background: #f8fafc;
+            border-radius: 18px;
+            padding: 22px 20px;
+            border: 1px solid #e9eef2;
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .initial-res-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #e8f0fe;
+            padding: 12px 18px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #0d3b66;
+        }
+
+        .initial-res-info span:first-child {
+            font-weight: 700;
+            margin-left: 5px;
+        }
+
+        .custom-res-title {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1e2a3a;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .resolution-inputs {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .input-group {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            padding: 10px 16px;
+            border-radius: 10px;
+            border: 2px solid #dde1e6;
+            flex: 1 1 140px;
+        }
+
+        .input-group label {
+            font-weight: 600;
+            color: #37474f;
+            white-space: nowrap;
+            font-size: 14px;
+        }
+
+        .input-group input {
+            border: none;
+            outline: none;
+            width: 100%;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            font-size: 16px;
+            padding: 6px;
+            text-align: center;
+            background: transparent;
+            font-weight: 500;
+        }
+
+        .lock-icon {
+            font-size: 26px;
+            cursor: pointer;
+            user-select: none;
+            background: white;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #dde1e6;
+            transition: all 0.2s;
+            background: #f9fafb;
+            font-weight: bold;
+        }
+
+        .lock-icon.locked {
+            background: #1976d2;
+            color: white;
+            border-color: #1976d2;
+            box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+        }
+
+        .apply-btn {
+            background: #e65100;
+            color: white;
+            border: none;
+            padding: 13px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            font-size: 16px;
+            transition: background 0.2s;
+            align-self: flex-start;
+            box-shadow: 0 6px 16px rgba(230, 81, 0, 0.2);
+            letter-spacing: 0;
+        }
+
+        .apply-btn:hover {
+            background: #bf360c;
+        }
+
+        .output-res-info {
+            font-size: 15px;
+            color: #2e3b4e;
+            background: #eef2f5;
+            padding: 10px 18px;
+            border-radius: 20px;
+            display: inline-block;
+            align-self: flex-start;
+            font-weight: 500;
+        }
+
+        /* بخش خروجی و دانلود */
+        .output-section {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .thumbnails-row {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding: 8px 4px;
+            flex-wrap: nowrap;
+        }
+
+        .thumbnails-row img {
+            height: 70px;
+            width: auto;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: border-color 0.2s, opacity 0.2s;
+            opacity: 0.7;
+            object-fit: cover;
+            min-width: 50px;
+        }
+
+        .thumbnails-row img.active {
+            border-color: #1976d2;
+            opacity: 1;
+        }
+
+        .thumbnails-row img:hover {
+            opacity: 0.9;
+            border-color: #90caf9;
+        }
+
+        .output-preview-box {
+            max-width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e9ecef;
+            background: #fdfdfd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+
+        .output-preview-box img {
+            max-width: 100%;
+            max-height: 420px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .format-selection {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .format-selection label {
+            font-weight: 600;
+            color: #1e2a3a;
+            font-size: 15px;
+        }
+
+        .format-selection select {
+            padding: 11px 18px;
+            border-radius: 10px;
+            border: 2px solid #dde1e6;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            background: white;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .download-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .download-btn {
+            background: #2e7d32;
+            color: white;
+            border: none;
+            padding: 13px 28px;
+            border-radius: 34px;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: Vazirmatn, Tahoma, Arial, sans-serif;
+            font-size: 16px;
+            transition: background 0.2s;
+            box-shadow: 0 6px 18px rgba(46, 125, 50, 0.15);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .download-btn:hover {
+            background: #1b5e20;
+        }
+
+        .download-btn:disabled {
+            background: #b0bec5;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        /* فوتر ساده و شیک (فقط Made by Abbas) */
+        .footer {
+            width: 100%;
+            max-width: 850px;
+            margin: 30px auto 0;
+            padding: 16px 10px;
+            text-align: center;
+            border-top: 1px solid #e0e0e0;
+            background: transparent;
+        }
+
+        .footer a {
+            color: #7f8c8d;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.2s;
+        }
+
+        .footer a:hover {
+            color: #1976d2;
+        }
+
+        /* واکنش‌گرایی موبایل */
+        @media (max-width: 600px) {
+            .main-container {
+                padding: 22px 16px;
+                gap: 22px;
+            }
+            .upload-area {
+                padding: 30px 15px;
+            }
+            .url-section {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .resolution-inputs {
+                flex-direction: column;
+            }
+            .apply-btn {
+                width: 100%;
+                text-align: center;
+            }
+            .header h1 {
+                font-size: 22px;
+            }
+            .thumbnails-row img {
+                height: 55px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ========== کادر اصلی ابزار ========== -->
+    <div class="main-container">
+
+        <!-- هدر -->
+        <div class="header">
+            <h1>ابزار تغییر رزولوشن تصویر</h1>
+            <p>تصویر خود را بارگذاری کنید و به رزولوشن دلخواه تبدیل کنید</p>
+        </div>
+
+        <!-- بخش آپلود (درگ‌اند‌دراپ + کلیک) -->
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-text">تصویر خود را اینجا رها کنید</div>
+            <div class="upload-hint">
+                یا با کلیک روی دکمه زیر فایل را انتخاب کنید<br>
+                همچنین می‌توانید تصویر کپی شده را با Ctrl+V جای‌گذاری کنید
+            </div>
+            <!-- دکمه آپلود ساده و فارسی -->
+            <label for="fileInput" class="file-input-label">انتخاب تصویر</label>
+            <input type="file" id="fileInput" accept="image/*" multiple class="file-input-hidden">
+        </div>
+
+        <!-- بخش لینک مستقیم -->
+        <div class="url-section">
+            <label>لینک مستقیم تصویر:</label>
+            <input type="url" id="urlInput" placeholder="https://example.com/image.jpg" dir="ltr">
+            <button id="loadUrlBtn">بارگذاری از لینک</button>
+        </div>
+
+        <!-- پنل تنظیمات رزولوشن -->
+        <div class="resolution-panel" id="resolutionPanel" style="display: none;">
+            <div class="initial-res-info" id="initialResDisplay">
+                <span>📐 رزولوشن اولیه:</span>
+                <span id="initialResValue">-</span>
+            </div>
+            <div class="custom-res-title">⚙️ تنظیم رزولوشن خروجی</div>
+            <div class="resolution-inputs">
+                <div class="input-group">
+                    <label>عرض:</label>
+                    <input type="number" id="widthInput" min="1" step="1" value="2000">
+                </div>
+                <div class="input-group">
+                    <label>ارتفاع:</label>
+                    <input type="number" id="heightInput" min="1" step="1" value="2000">
+                </div>
+                <div class="lock-icon locked" id="lockAspectBtn" title="حفظ نسبت تصویر (فعال)">🔒</div>
+            </div>
+            <button class="apply-btn" id="applyResBtn">اعمال رزولوشن سفارشی</button>
+            <div class="output-res-info" id="currentOutResolution">رزولوشن خروجی: ۲۰۰۰ × ۲۰۰۰</div>
+        </div>
+
+        <!-- بخش خروجی و دانلود -->
+        <div class="output-section" id="outputSection" style="display: none;">
+            <h3 style="color:#1e2a3a; font-weight:700;">🖼️ پیش‌نمایش خروجی</h3>
+            <!-- thumbnail row for multiple images -->
+            <div class="thumbnails-row" id="thumbnailsRow"></div>
+            <!-- main preview -->
+            <div class="output-preview-box" id="outputPreviewBox">
+                <img id="outputPreview" src="" alt="پیش‌نمایش تصویر خروجی">
+            </div>
+            <!-- انتخاب فرمت خروجی -->
+            <div class="format-selection">
+                <label>فرمت خروجی:</label>
+                <select id="formatSelect">
+                    <option value="image/png">PNG (کیفیت بالا)</option>
+                    <option value="image/jpeg">JPG (کیفیت 92%)</option>
+                </select>
+            </div>
+            <!-- دکمه‌های دانلود (تکی یا چندگانه) -->
+            <div class="download-buttons" id="downloadButtonsContainer"></div>
+        </div>
+    </div>
+
+    <!-- ========== فوتر: فقط یک خط ساده ========== -->
+    <footer class="footer">
+        <a href="https://abbasaghebaty.github.io/about-me/" target="_blank">Made by Abbas</a>
+    </footer>
+
+    <script>
+        (function() {
+            // ---------- متغیرهای سراسری ----------
+            let imagesData = [];           // آرایه‌ای از { originalImg, width, height, outputBlob, outputUrl }
+            let selectedImageIndex = 0;    // کدام تصویر در preview اصلی نشان داده شود
+            let lockAspect = true;
+            let targetWidth = 2000;
+            let targetHeight = 2000;
+            let currentAspectRatio = 1;    // نسبت تصویر مرجع برای قفل
+
+            // ---------- ارجاع به عناصر DOM ----------
+            const uploadArea = document.getElementById('uploadArea');
+            const fileInput = document.getElementById('fileInput');
+            const urlInput = document.getElementById('urlInput');
+            const loadUrlBtn = document.getElementById('loadUrlBtn');
+            const resolutionPanel = document.getElementById('resolutionPanel');
+            const initialResValue = document.getElementById('initialResValue');
+            const widthInput = document.getElementById('widthInput');
+            const heightInput = document.getElementById('heightInput');
+            const lockAspectBtn = document.getElementById('lockAspectBtn');
+            const applyResBtn = document.getElementById('applyResBtn');
+            const currentOutResolution = document.getElementById('currentOutResolution');
+            const outputSection = document.getElementById('outputSection');
+            const outputPreview = document.getElementById('outputPreview');
+            const thumbnailsRow = document.getElementById('thumbnailsRow');
+            const formatSelect = document.getElementById('formatSelect');
+            const downloadButtonsContainer = document.getElementById('downloadButtonsContainer');
+
+            // ---------- توابع کمکی ----------
+            function readFileAsDataURL(file) {
+                return new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.onerror = () => reject(new Error('خطا در خواندن فایل'));
+                    reader.readAsDataURL(file);
+                });
+            }
+
+            function loadImageFromSrc(src) {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.crossOrigin = "Anonymous";
+                    img.onload = () => resolve(img);
+                    img.onerror = () => reject(new Error('خطا در بارگذاری تصویر. لینک مستقیم باشد و CORS فعال.'));
+                    img.src = src;
+                });
+            }
+
+            function resizeImageHighQuality(sourceImg, targetW, targetH) {
+                const canvas = document.createElement('canvas');
+                canvas.width = targetW;
+                canvas.height = targetH;
+                const ctx = canvas.getContext('2d');
+                ctx.imageSmoothingEnabled = true;
+                ctx.imageSmoothingQuality = 'high';
+                ctx.drawImage(sourceImg, 0, 0, targetW, targetH);
+                return canvas;
+            }
+
+            function canvasToBlob(canvas, format, quality = 0.92) {
+                return new Promise((resolve, reject) => {
+                    canvas.toBlob((blob) => {
+                        if (blob) resolve(blob);
+                        else reject(new Error('خطا در ایجاد خروجی تصویر'));
+                    }, format, quality);
+                });
+         
