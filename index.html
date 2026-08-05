@@ -8,10 +8,6 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <style>
-        /* ========================================
-           CSS اصلی برنامه - طراحی مدرن و واکنش‌گرا
-           فونت: Vazirmatn, Tahoma, Arial, sans-serif
-           ======================================== */
         * {
             margin: 0;
             padding: 0;
@@ -32,7 +28,6 @@
             font-weight: 400;
         }
 
-        /* کانتینر اصلی با عرض محدود و متمرکز - فقط ابزار اصلی */
         .main-container {
             width: 100%;
             max-width: 850px;
@@ -46,7 +41,6 @@
             gap: 28px;
         }
 
-        /* هدر و عنوان */
         .header {
             text-align: center;
             margin-bottom: 5px;
@@ -66,8 +60,9 @@
             font-weight: 400;
         }
 
-        /* بخش آپلود (درگ‌اند‌دراپ) - بدون آیکون اضافی */
+        /* بازنویسی کامل بخش آپلود برای کارکرد مطمئن در موبایل */
         .upload-area {
+            position: relative;
             border: 3px dashed #b0bec5;
             border-radius: 18px;
             padding: 45px 25px;
@@ -75,7 +70,7 @@
             background: #fafcfd;
             transition: all 0.25s ease;
             cursor: pointer;
-            position: relative;
+            overflow: hidden; /* اطمینان از پوشش کامل input */
         }
 
         .upload-area:hover,
@@ -90,6 +85,7 @@
             color: #1e2a3a;
             margin-bottom: 12px;
             font-weight: 600;
+            pointer-events: none;
         }
 
         .upload-area .upload-hint {
@@ -97,10 +93,11 @@
             color: #6b7b8d;
             margin-bottom: 22px;
             line-height: 1.8;
+            pointer-events: none;
         }
 
-        /* دکمه اصلی آپلود - ساده، بزرگ و فارسی */
-        .file-input-label {
+        /* دکمه بصری "انتخاب تصویر" (فقط نمایشی) */
+        .fake-upload-button {
             display: inline-block;
             background: #1976d2;
             color: white;
@@ -108,27 +105,23 @@
             border-radius: 40px;
             font-size: 17px;
             font-weight: 600;
-            cursor: pointer;
             transition: background 0.2s, box-shadow 0.2s;
             box-shadow: 0 8px 20px rgba(25, 118, 210, 0.2);
             border: none;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
-            letter-spacing: 0;
+            pointer-events: none;
         }
 
-        .file-input-label:hover {
-            background: #1565c0;
-            box-shadow: 0 10px 24px rgba(21, 101, 192, 0.25);
-        }
-
-        /* مخفی کردن input file به شکلی که در موبایل هم کار کند */
-        .file-input-hidden {
+        /* input file شفاف که کل بخش آپلود را می‌پوشاند */
+        .upload-area input[type="file"] {
             position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             opacity: 0;
-            width: 0.1px;
-            height: 0.1px;
-            overflow: hidden;
-            z-index: -1;
+            cursor: pointer;
+            z-index: 2;
         }
 
         /* بخش لینک مستقیم */
@@ -138,7 +131,7 @@
             flex-wrap: wrap;
             align-items: center;
             background: #f4f6f8;
-            padding: 16px 20px;
+            padding: 12px 16px;
             border-radius: 14px;
             border: 1px solid #e1e6eb;
         }
@@ -147,18 +140,22 @@
             font-weight: 600;
             color: #1e2a3a;
             white-space: nowrap;
-            font-size: 15px;
+            font-size: 14px;
+            min-width: fit-content;
         }
 
         .url-section input {
-            flex: 1 1 220px;
-            padding: 12px 16px;
+            flex: 1 1 200px;
+            padding: 8px 12px;
             border: 2px solid #dde1e6;
             border-radius: 10px;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
             font-size: 14px;
-            transition: border 0.2s;
+            line-height: 1.4;
+            height: 44px;
             background: white;
+            transition: border 0.2s;
+            box-sizing: border-box;
         }
 
         .url-section input:focus {
@@ -170,21 +167,23 @@
             background: #2e7d32;
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 10px 20px;
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
             font-size: 14px;
-            transition: background 0.2s;
+            height: 44px;
             white-space: nowrap;
+            box-sizing: border-box;
+            transition: background 0.2s;
         }
 
         .url-section button:hover {
             background: #1b5e20;
         }
 
-        /* بخش تنظیمات رزولوشن */
+        /* تنظیمات رزولوشن */
         .resolution-panel {
             background: #f8fafc;
             border-radius: 18px;
@@ -216,9 +215,6 @@
             font-size: 17px;
             font-weight: 700;
             color: #1e2a3a;
-            display: flex;
-            align-items: center;
-            gap: 6px;
         }
 
         .resolution-inputs {
@@ -242,8 +238,8 @@
         .input-group label {
             font-weight: 600;
             color: #37474f;
-            white-space: nowrap;
             font-size: 14px;
+            white-space: nowrap;
         }
 
         .input-group input {
@@ -295,7 +291,6 @@
             transition: background 0.2s;
             align-self: flex-start;
             box-shadow: 0 6px 16px rgba(230, 81, 0, 0.2);
-            letter-spacing: 0;
         }
 
         .apply-btn:hover {
@@ -313,7 +308,6 @@
             font-weight: 500;
         }
 
-        /* بخش خروجی و دانلود */
         .output-section {
             display: flex;
             flex-direction: column;
@@ -325,16 +319,13 @@
             gap: 12px;
             overflow-x: auto;
             padding: 8px 4px;
-            flex-wrap: nowrap;
         }
 
         .thumbnails-row img {
             height: 70px;
-            width: auto;
             border-radius: 10px;
             cursor: pointer;
             border: 3px solid transparent;
-            transition: border-color 0.2s, opacity 0.2s;
             opacity: 0.7;
             object-fit: cover;
             min-width: 50px;
@@ -429,7 +420,7 @@
             box-shadow: none;
         }
 
-        /* فوتر ساده و شیک (فقط Made by Abbas) */
+        /* فوتر ساده و شیک */
         .footer {
             width: 100%;
             max-width: 850px;
@@ -465,6 +456,11 @@
                 flex-direction: column;
                 align-items: stretch;
             }
+            .url-section input,
+            .url-section button {
+                width: 100%;
+                height: 44px;
+            }
             .resolution-inputs {
                 flex-direction: column;
             }
@@ -483,7 +479,6 @@
 </head>
 <body>
 
-    <!-- ========== کادر اصلی ابزار ========== -->
     <div class="main-container">
 
         <!-- هدر -->
@@ -492,19 +487,19 @@
             <p>تصویر خود را بارگذاری کنید و به رزولوشن دلخواه تبدیل کنید</p>
         </div>
 
-        <!-- بخش آپلود (درگ‌اند‌دراپ + کلیک) -->
+        <!-- بخش آپلود اصلاح‌شده: input file شفاف کل فضا را می‌پوشاند -->
         <div class="upload-area" id="uploadArea">
+            <input type="file" id="fileInput" accept="image/*" multiple>
             <div class="upload-text">تصویر خود را اینجا رها کنید</div>
             <div class="upload-hint">
                 یا با کلیک روی دکمه زیر فایل را انتخاب کنید<br>
                 همچنین می‌توانید تصویر کپی شده را با Ctrl+V جای‌گذاری کنید
             </div>
-            <!-- دکمه آپلود ساده و فارسی -->
-            <label for="fileInput" class="file-input-label">انتخاب تصویر</label>
-            <input type="file" id="fileInput" accept="image/*" multiple class="file-input-hidden">
+            <!-- دکمه بصری بدون عملکرد (کلیک مستقیماً روی input می‌رود) -->
+            <div class="fake-upload-button">انتخاب تصویر</div>
         </div>
 
-        <!-- بخش لینک مستقیم -->
+        <!-- بخش لینک مستقیم (اندازه‌های اصلاح‌شده) -->
         <div class="url-section">
             <label>لینک مستقیم تصویر:</label>
             <input type="url" id="urlInput" placeholder="https://example.com/image.jpg" dir="ltr">
@@ -536,13 +531,10 @@
         <!-- بخش خروجی و دانلود -->
         <div class="output-section" id="outputSection" style="display: none;">
             <h3 style="color:#1e2a3a; font-weight:700;">🖼️ پیش‌نمایش خروجی</h3>
-            <!-- thumbnail row for multiple images -->
             <div class="thumbnails-row" id="thumbnailsRow"></div>
-            <!-- main preview -->
             <div class="output-preview-box" id="outputPreviewBox">
                 <img id="outputPreview" src="" alt="پیش‌نمایش تصویر خروجی">
             </div>
-            <!-- انتخاب فرمت خروجی -->
             <div class="format-selection">
                 <label>فرمت خروجی:</label>
                 <select id="formatSelect">
@@ -550,27 +542,23 @@
                     <option value="image/jpeg">JPG (کیفیت 92%)</option>
                 </select>
             </div>
-            <!-- دکمه‌های دانلود (تکی یا چندگانه) -->
             <div class="download-buttons" id="downloadButtonsContainer"></div>
         </div>
     </div>
 
-    <!-- ========== فوتر: فقط یک خط ساده ========== -->
     <footer class="footer">
         <a href="https://abbasaghebaty.github.io/about-me/" target="_blank">Made by Abbas</a>
     </footer>
 
     <script>
         (function() {
-            // ---------- متغیرهای سراسری ----------
-            let imagesData = [];           // آرایه‌ای از { originalImg, width, height, outputBlob, outputUrl }
-            let selectedImageIndex = 0;    // کدام تصویر در preview اصلی نشان داده شود
+            let imagesData = [];
+            let selectedImageIndex = 0;
             let lockAspect = true;
             let targetWidth = 2000;
             let targetHeight = 2000;
-            let currentAspectRatio = 1;    // نسبت تصویر مرجع برای قفل
+            let currentAspectRatio = 1;
 
-            // ---------- ارجاع به عناصر DOM ----------
             const uploadArea = document.getElementById('uploadArea');
             const fileInput = document.getElementById('fileInput');
             const urlInput = document.getElementById('urlInput');
@@ -588,7 +576,6 @@
             const formatSelect = document.getElementById('formatSelect');
             const downloadButtonsContainer = document.getElementById('downloadButtonsContainer');
 
-            // ---------- توابع کمکی ----------
             function readFileAsDataURL(file) {
                 return new Promise((resolve, reject) => {
                     const reader = new FileReader();
@@ -626,4 +613,323 @@
                         else reject(new Error('خطا در ایجاد خروجی تصویر'));
                     }, format, quality);
                 });
-         
+            }
+
+            function generateOutputUrl(blob) {
+                return URL.createObjectURL(blob);
+            }
+
+            function getAspectRatio(w, h) { return w / h; }
+
+            function clearPreviousData() {
+                imagesData.forEach(item => {
+                    if (item.outputUrl) URL.revokeObjectURL(item.outputUrl);
+                });
+                imagesData = [];
+                selectedImageIndex = 0;
+                outputPreview.src = '';
+                thumbnailsRow.innerHTML = '';
+                downloadButtonsContainer.innerHTML = '';
+                outputSection.style.display = 'none';
+                resolutionPanel.style.display = 'none';
+            }
+
+            async function addImagesFromFiles(files) {
+                const validFiles = Array.from(files).filter(f => f.type.startsWith('image/'));
+                if (validFiles.length === 0) {
+                    alert('لطفاً فقط فایل‌های تصویری انتخاب کنید.');
+                    return;
+                }
+                clearPreviousData();
+                for (const file of validFiles) {
+                    try {
+                        const dataUrl = await readFileAsDataURL(file);
+                        const img = await loadImageFromSrc(dataUrl);
+                        imagesData.push({
+                            originalImg: img,
+                            width: img.width,
+                            height: img.height,
+                            outputBlob: null,
+                            outputUrl: null,
+                            fileName: file.name || 'image'
+                        });
+                    } catch (err) {
+                        console.error('خطا در بارگذاری فایل:', err);
+                    }
+                }
+                if (imagesData.length > 0) onImagesLoaded();
+            }
+
+            async function addImageFromUrl(url) {
+                clearPreviousData();
+                try {
+                    const img = await loadImageFromSrc(url);
+                    imagesData.push({
+                        originalImg: img,
+                        width: img.width,
+                        height: img.height,
+                        outputBlob: null,
+                        outputUrl: null,
+                        fileName: 'image-from-url'
+                    });
+                    onImagesLoaded();
+                } catch (err) {
+                    alert('خطا در بارگذاری تصویر از لینک: ' + err.message);
+                }
+            }
+
+            async function addImageFromBlob(blob) {
+                clearPreviousData();
+                try {
+                    const dataUrl = await readFileAsDataURL(blob);
+                    const img = await loadImageFromSrc(dataUrl);
+                    imagesData.push({
+                        originalImg: img,
+                        width: img.width,
+                        height: img.height,
+                        outputBlob: null,
+                        outputUrl: null,
+                        fileName: 'pasted-image'
+                    });
+                    onImagesLoaded();
+                } catch (err) {
+                    console.error('خطا در بارگذاری تصویر clipboard:', err);
+                }
+            }
+
+            function onImagesLoaded() {
+                if (imagesData.length === 0) return;
+                const firstImg = imagesData[0];
+                currentAspectRatio = getAspectRatio(firstImg.width, firstImg.height);
+                if (imagesData.length === 1) {
+                    initialResValue.textContent = `${firstImg.width} × ${firstImg.height}`;
+                } else {
+                    initialResValue.textContent = `${imagesData.length} تصویر بارگذاری شد | اولین: ${firstImg.width} × ${firstImg.height}`;
+                }
+                if (lockAspect) {
+                    targetHeight = Math.round(targetWidth / currentAspectRatio);
+                }
+                widthInput.value = targetWidth;
+                heightInput.value = targetHeight;
+                updateOutputResolutionLabel();
+                resolutionPanel.style.display = 'flex';
+                outputSection.style.display = 'flex';
+                processAllImages();
+                updatePreviewAndThumbnails();
+            }
+
+            async function processAllImages() {
+                const format = formatSelect.value;
+                const quality = 0.92;
+                for (let i = 0; i < imagesData.length; i++) {
+                    const item = imagesData[i];
+                    const canvas = resizeImageHighQuality(item.originalImg, targetWidth, targetHeight);
+                    try {
+                        const blob = await canvasToBlob(canvas, format, quality);
+                        if (item.outputUrl) URL.revokeObjectURL(item.outputUrl);
+                        item.outputBlob = blob;
+                        item.outputUrl = generateOutputUrl(blob);
+                    } catch (err) {
+                        console.error('خطا در پردازش تصویر:', err);
+                    }
+                }
+                updatePreviewAndThumbnails();
+                updateDownloadButtons();
+            }
+
+            function updatePreviewAndThumbnails() {
+                if (imagesData.length === 0) return;
+                if (selectedImageIndex >= imagesData.length) selectedImageIndex = 0;
+                const selectedItem = imagesData[selectedImageIndex];
+                outputPreview.src = selectedItem.outputUrl || '';
+                thumbnailsRow.innerHTML = '';
+                if (imagesData.length > 1) {
+                    imagesData.forEach((item, idx) => {
+                        const thumb = document.createElement('img');
+                        thumb.src = item.outputUrl || '';
+                        thumb.alt = `تصویر ${idx + 1}`;
+                        thumb.title = `تصویر ${idx + 1}`;
+                        if (idx === selectedImageIndex) thumb.classList.add('active');
+                        thumb.addEventListener('click', () => {
+                            selectedImageIndex = idx;
+                            updatePreviewAndThumbnails();
+                        });
+                        thumbnailsRow.appendChild(thumb);
+                    });
+                }
+            }
+
+            function updateDownloadButtons() {
+                downloadButtonsContainer.innerHTML = '';
+                if (imagesData.length === 0) return;
+                if (imagesData.length === 1) {
+                    const btn = document.createElement('button');
+                    btn.className = 'download-btn';
+                    btn.textContent = '⬇️ دانلود تصویر نهایی';
+                    btn.addEventListener('click', () => downloadImage(0));
+                    downloadButtonsContainer.appendChild(btn);
+                } else {
+                    imagesData.forEach((item, idx) => {
+                        const btn = document.createElement('button');
+                        btn.className = 'download-btn';
+                        btn.textContent = `⬇️ دانلود تصویر ${idx + 1}`;
+                        btn.addEventListener('click', () => downloadImage(idx));
+                        downloadButtonsContainer.appendChild(btn);
+                    });
+                }
+            }
+
+            function downloadImage(index) {
+                if (index < 0 || index >= imagesData.length) return;
+                const item = imagesData[index];
+                if (!item.outputBlob) {
+                    alert('تصویر هنوز پردازش نشده است.');
+                    return;
+                }
+                const url = item.outputUrl;
+                const a = document.createElement('a');
+                a.href = url;
+                const ext = formatSelect.value === 'image/png' ? 'png' : 'jpg';
+                const baseName = item.fileName.replace(/\.[^/.]+$/, '');
+                a.download = `${baseName}_${targetWidth}x${targetHeight}.${ext}`;
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+            }
+
+            function updateOutputResolutionLabel() {
+                currentOutResolution.textContent = `رزولوشن خروجی: ${targetWidth} × ${targetHeight}`;
+            }
+
+            // رویداد change مستقیم روی fileInput (بدون دخالت کلیک اضافی)
+            fileInput.addEventListener('change', (e) => {
+                if (fileInput.files && fileInput.files.length > 0) {
+                    addImagesFromFiles(fileInput.files);
+                }
+                // ریست کردن value برای امکان انتخاب دوباره همان فایل‌ها
+                fileInput.value = '';
+            });
+
+            // جلوگیری از انتشار کلیک روی input به uploadArea (چون input خودش بالاست)
+            uploadArea.addEventListener('click', (e) => {
+                // اگر کاربر روی input کلیک کند که خودش باز می‌شود؛ در غیر این صورت کلیک روی فضای خالی، input را کلیک کن
+                if (e.target !== fileInput) {
+                    fileInput.click();
+                }
+            });
+
+            // درگ‌اند‌دراپ
+            uploadArea.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                uploadArea.classList.add('dragover');
+            });
+            uploadArea.addEventListener('dragleave', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                uploadArea.classList.remove('dragover');
+            });
+            uploadArea.addEventListener('drop', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                uploadArea.classList.remove('dragover');
+                if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+                    addImagesFromFiles(e.dataTransfer.files);
+                }
+            });
+
+            // Paste از کلیپ‌بورد
+            document.addEventListener('paste', (e) => {
+                const items = e.clipboardData?.items;
+                if (!items) return;
+                for (const item of items) {
+                    if (item.type.startsWith('image/')) {
+                        const blob = item.getAsFile();
+                        if (blob) {
+                            e.preventDefault();
+                            addImageFromBlob(blob);
+                            break;
+                        }
+                    }
+                }
+            });
+
+            loadUrlBtn.addEventListener('click', () => {
+                const url = urlInput.value.trim();
+                if (!url) {
+                    alert('لطفاً یک لینک معتبر وارد کنید.');
+                    return;
+                }
+                addImageFromUrl(url);
+            });
+
+            urlInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') loadUrlBtn.click();
+            });
+
+            lockAspectBtn.addEventListener('click', () => {
+                lockAspect = !lockAspect;
+                if (lockAspect) {
+                    lockAspectBtn.classList.add('locked');
+                    lockAspectBtn.textContent = '🔒';
+                    lockAspectBtn.title = 'حفظ نسبت تصویر (فعال)';
+                    if (imagesData.length > 0) {
+                        const refImg = imagesData[selectedImageIndex] || imagesData[0];
+                        currentAspectRatio = getAspectRatio(refImg.width, refImg.height);
+                        targetHeight = Math.round(targetWidth / currentAspectRatio);
+                        heightInput.value = targetHeight;
+                        updateOutputResolutionLabel();
+                    }
+                } else {
+                    lockAspectBtn.classList.remove('locked');
+                    lockAspectBtn.textContent = '🔓';
+                    lockAspectBtn.title = 'حفظ نسبت تصویر (غیرفعال)';
+                }
+            });
+
+            widthInput.addEventListener('input', () => {
+                targetWidth = parseInt(widthInput.value) || 1;
+                if (targetWidth < 1) targetWidth = 1;
+                if (lockAspect) {
+                    targetHeight = Math.round(targetWidth / currentAspectRatio);
+                    if (targetHeight < 1) targetHeight = 1;
+                    heightInput.value = targetHeight;
+                }
+                updateOutputResolutionLabel();
+            });
+
+            heightInput.addEventListener('input', () => {
+                targetHeight = parseInt(heightInput.value) || 1;
+                if (targetHeight < 1) targetHeight = 1;
+                if (lockAspect) {
+                    targetWidth = Math.round(targetHeight * currentAspectRatio);
+                    if (targetWidth < 1) targetWidth = 1;
+                    widthInput.value = targetWidth;
+                }
+                updateOutputResolutionLabel();
+            });
+
+            applyResBtn.addEventListener('click', () => {
+                targetWidth = parseInt(widthInput.value) || 2000;
+                targetHeight = parseInt(heightInput.value) || 2000;
+                if (targetWidth < 1) targetWidth = 1;
+                if (targetHeight < 1) targetHeight = 1;
+                widthInput.value = targetWidth;
+                heightInput.value = targetHeight;
+                updateOutputResolutionLabel();
+                if (imagesData.length > 0) processAllImages();
+            });
+
+            formatSelect.addEventListener('change', () => {
+                if (imagesData.length > 0) processAllImages();
+            });
+
+            updateOutputResolutionLabel();
+
+            // جلوگیری از پیش‌فرض درگ روی کل صفحه
+            window.addEventListener('dragover', (e) => e.preventDefault());
+            window.addEventListener('drop', (e) => e.preventDefault());
+        })();
+    </script>
+</body>
+</html>
