@@ -90,7 +90,6 @@
             line-height: 1.8;
         }
 
-        /* input مخفی شده برای موبایل */
         .file-input-hidden {
             position: absolute;
             opacity: 0;
@@ -100,7 +99,6 @@
             pointer-events: none;
         }
 
-        /* دکمه آپلود (حالا یک label واقعی) */
         .file-input-label {
             display: inline-block;
             background: #1976d2;
@@ -124,11 +122,11 @@
         /* بخش لینک مستقیم */
         .url-section {
             display: flex;
-            gap: 12px;
+            gap: 10px;
             flex-wrap: wrap;
             align-items: center;
             background: #f4f6f8;
-            padding: 12px 16px;
+            padding: 10px 14px;
             border-radius: 14px;
             border: 1px solid #e1e6eb;
         }
@@ -137,24 +135,25 @@
             font-weight: 600;
             color: #1e2a3a;
             white-space: nowrap;
-            font-size: 14px;
+            font-size: 13px;
         }
 
         .url-section input {
-            flex: 1 1 200px;
-            padding: 8px 12px;
+            flex: 1 1 180px;
+            padding: 7px 10px;
             border: 2px solid #dde1e6;
             border-radius: 10px;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 500;
             line-height: 1.7;
             color: #333;
             letter-spacing: normal;
-            height: 44px;
+            height: 40px;
             background: white;
             transition: border 0.2s;
             box-sizing: border-box;
+            min-width: 140px;
         }
 
         .url-section input:focus {
@@ -164,7 +163,7 @@
 
         .url-section input::placeholder {
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 400;
             line-height: 1.7;
             color: #999;
@@ -175,16 +174,17 @@
             background: #2e7d32;
             color: white;
             border: none;
-            padding: 10px 20px;
+            padding: 9px 18px;
             border-radius: 10px;
             font-weight: 600;
             cursor: pointer;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
-            font-size: 14px;
-            height: 44px;
+            font-size: 13px;
+            height: 40px;
             white-space: nowrap;
             box-sizing: border-box;
             transition: background 0.2s;
+            flex-shrink: 0;
         }
 
         .url-section button:hover {
@@ -195,54 +195,58 @@
         .resolution-panel {
             background: #f8fafc;
             border-radius: 18px;
-            padding: 22px 20px;
+            padding: 18px 16px;
             border: 1px solid #e9eef2;
             display: flex;
             flex-direction: column;
-            gap: 18px;
+            gap: 14px;
         }
 
         .initial-res-info {
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
             background: #e8f0fe;
-            padding: 12px 18px;
+            padding: 10px 14px;
             border-radius: 12px;
-            font-size: 15px;
+            font-size: 13px;
             font-weight: 500;
             color: #0d3b66;
+            flex-wrap: wrap;
         }
 
         .custom-res-title {
-            font-size: 17px;
+            font-size: 15px;
             font-weight: 700;
             color: #1e2a3a;
         }
 
-        .resolution-inputs {
+        .resolution-inputs-row {
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
-            gap: 14px;
+            gap: 10px;
+            flex-wrap: nowrap;
         }
 
         .input-group {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
             background: white;
-            padding: 10px 16px;
+            padding: 7px 12px;
             border-radius: 10px;
             border: 2px solid #dde1e6;
-            flex: 1 1 140px;
+            flex: 1 1 0;
+            min-width: 0;
+            height: 42px;
         }
 
         .input-group label {
             font-weight: 600;
             color: #37474f;
-            font-size: 14px;
+            font-size: 13px;
             white-space: nowrap;
+            flex-shrink: 0;
         }
 
         .input-group input {
@@ -250,26 +254,29 @@
             outline: none;
             width: 100%;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
-            font-size: 16px;
-            padding: 6px;
+            font-size: 14px;
+            padding: 4px 2px;
             text-align: center;
             background: transparent;
             font-weight: 500;
+            min-width: 0;
         }
 
         .lock-icon {
-            font-size: 26px;
+            font-size: 22px;
             cursor: pointer;
             user-select: none;
             background: white;
             border-radius: 50%;
-            width: 48px;
-            height: 48px;
+            width: 42px;
+            height: 42px;
             display: flex;
             align-items: center;
             justify-content: center;
             border: 2px solid #dde1e6;
             transition: all 0.2s;
+            flex-shrink: 0;
+            flex-grow: 0;
         }
 
         .lock-icon.locked {
@@ -283,15 +290,16 @@
             background: #e65100;
             color: white;
             border: none;
-            padding: 13px 30px;
+            padding: 11px 26px;
             border-radius: 30px;
             font-weight: 600;
             cursor: pointer;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
-            font-size: 16px;
+            font-size: 14px;
             transition: background 0.2s;
             align-self: flex-start;
             box-shadow: 0 6px 16px rgba(230, 81, 0, 0.2);
+            white-space: nowrap;
         }
 
         .apply-btn:hover {
@@ -299,10 +307,10 @@
         }
 
         .output-res-info {
-            font-size: 15px;
+            font-size: 13px;
             color: #2e3b4e;
             background: #eef2f5;
-            padding: 10px 18px;
+            padding: 8px 14px;
             border-radius: 20px;
             display: inline-block;
             font-weight: 500;
@@ -363,15 +371,17 @@
         .format-selection label {
             font-weight: 600;
             color: #1e2a3a;
+            font-size: 14px;
         }
 
         .format-selection select {
-            padding: 11px 18px;
+            padding: 10px 16px;
             border-radius: 10px;
             border: 2px solid #dde1e6;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
             background: white;
             cursor: pointer;
+            font-size: 14px;
         }
 
         .download-buttons {
@@ -384,12 +394,12 @@
             background: #2e7d32;
             color: white;
             border: none;
-            padding: 13px 28px;
+            padding: 12px 24px;
             border-radius: 34px;
             font-weight: 600;
             cursor: pointer;
             font-family: Vazirmatn, Tahoma, Arial, sans-serif;
-            font-size: 16px;
+            font-size: 15px;
             transition: background 0.2s;
             box-shadow: 0 6px 18px rgba(46, 125, 50, 0.15);
             display: inline-flex;
@@ -433,26 +443,88 @@
 
         @media (max-width: 600px) {
             .main-container {
-                padding: 22px 16px;
+                padding: 20px 14px;
+                gap: 22px;
             }
             .upload-area {
-                padding: 30px 15px;
+                padding: 28px 14px;
             }
             .url-section {
-                flex-direction: column;
-                align-items: stretch;
+                flex-direction: row;
+                flex-wrap: wrap;
+                gap: 8px;
+                padding: 8px 10px;
             }
-            .url-section input,
+            .url-section label {
+                font-size: 12px;
+            }
+            .url-section input {
+                flex: 1 1 120px;
+                height: 38px;
+                font-size: 12px;
+                padding: 6px 8px;
+                min-width: 100px;
+            }
             .url-section button {
-                flex: 0 0 auto;
-                width: 100%;
-                height: 44px;
+                height: 38px;
+                font-size: 12px;
+                padding: 8px 14px;
+                flex-shrink: 0;
             }
-            .resolution-inputs {
-                flex-direction: column;
+
+            /* رزولوشن: همیشه کنار هم (بدون شکستن به ستون) */
+            .resolution-inputs-row {
+                flex-wrap: nowrap;
+                gap: 6px;
             }
+
+            .input-group {
+                padding: 5px 8px;
+                height: 38px;
+                gap: 4px;
+                flex: 1 1 0;
+                min-width: 0;
+            }
+
+            .input-group label {
+                font-size: 11px;
+            }
+
+            .input-group input {
+                font-size: 13px;
+                padding: 2px;
+            }
+
+            .lock-icon {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
+                flex-shrink: 0;
+                flex-grow: 0;
+            }
+
             .apply-btn {
-                width: 100%;
+                font-size: 13px;
+                padding: 10px 20px;
+            }
+
+            .resolution-panel {
+                padding: 14px 12px;
+                gap: 10px;
+            }
+
+            .initial-res-info {
+                font-size: 12px;
+                padding: 8px 10px;
+            }
+
+            .output-res-info {
+                font-size: 12px;
+                padding: 6px 10px;
+            }
+
+            .custom-res-title {
+                font-size: 14px;
             }
         }
     </style>
@@ -465,7 +537,7 @@
             <p>تصویر خود را بارگذاری کنید و به رزولوشن دلخواه تبدیل کنید</p>
         </div>
 
-        <!-- بخش آپلود: label + input مخفی (روش استاندارد موبایل) -->
+        <!-- بخش آپلود -->
         <div class="upload-area" id="uploadArea">
             <input type="file" id="fileInput" accept="image/*" multiple class="file-input-hidden">
             <div class="upload-text">تصویر خود را اینجا رها کنید</div>
@@ -490,7 +562,7 @@
                 <span id="initialResValue">-</span>
             </div>
             <div class="custom-res-title">⚙️ تنظیم رزولوشن خروجی</div>
-            <div class="resolution-inputs">
+            <div class="resolution-inputs-row">
                 <div class="input-group">
                     <label>عرض:</label>
                     <input type="number" id="widthInput" min="1" step="1" value="2000">
@@ -770,7 +842,6 @@
                 currentOutResolution.textContent = `رزولوشن خروجی: ${targetWidth} × ${targetHeight}`;
             }
 
-            // رویداد change روی input (با label فعال می‌شود)
             fileInput.addEventListener('change', (e) => {
                 if (fileInput.files && fileInput.files.length > 0) {
                     addImagesFromFiles(fileInput.files);
@@ -778,7 +849,6 @@
                 fileInput.value = '';
             });
 
-            // درگ‌اند‌دراپ (برای دسکتاپ)
             const uploadArea = document.getElementById('uploadArea');
             uploadArea.addEventListener('dragover', (e) => {
                 e.preventDefault();
@@ -795,7 +865,6 @@
                 }
             });
 
-            // Paste از کلیپ‌بورد
             document.addEventListener('paste', (e) => {
                 const items = e.clipboardData?.items;
                 if (!items) return;
@@ -811,7 +880,6 @@
                 }
             });
 
-            // بارگذاری از URL
             loadUrlBtn.addEventListener('click', () => {
                 const url = urlInput.value.trim();
                 if (!url) return alert('لطفاً یک لینک معتبر وارد کنید.');
@@ -821,7 +889,6 @@
                 if (e.key === 'Enter') loadUrlBtn.click();
             });
 
-            // قفل نسبت تصویر
             lockAspectBtn.addEventListener('click', () => {
                 lockAspect = !lockAspect;
                 if (lockAspect) {
