@@ -361,9 +361,11 @@ a{color:inherit;text-decoration:none;}
 /* ============ FOOTER ============ */
 
 .site-footer{
+  width:100%;
   border-top:1px solid var(--line);
   margin-top:24px;
   padding:24px 0 40px;
+  background:var(--cream);
 }
 
 .footer-inner{
@@ -371,7 +373,10 @@ a{color:inherit;text-decoration:none;}
   align-items:center;
   justify-content:space-between;
   gap:20px;
-  flex-wrap:wrap;
+}
+
+.footer-info{
+  min-width:0;
 }
 
 .footer-brand{
@@ -393,21 +398,20 @@ a{color:inherit;text-decoration:none;}
   text-align:center;
 }
 
-/* لوگوی اینماد */
-.footer-inner > a{
+.enamad-link{
   display:flex;
   align-items:center;
   justify-content:center;
   flex-shrink:0;
 }
 
-.footer-inner > a img{
+.enamad-link img{
+  display:block;
   width:70px;
-  height:auto;
-  max-height:90px;
+  height:70px;
+  max-width:70px;
   object-fit:contain;
 }
-
 /* ============ REVEAL ANIMATION ============ */
 .reveal{
   opacity:0;
