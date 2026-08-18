@@ -410,12 +410,10 @@ a{color:inherit;text-decoration:none;}
 }
 
 .enamad-link img{
-  display:block !important;
-  width:70px !important;
-  height:70px !important;
-  max-width:70px !important;
-  max-height:70px !important;
-  object-fit:contain;
+  display:block;
+  width:auto;
+  height:70px;
+  max-width:100%;
 }
 /* ============ REVEAL ANIMATION ============ */
 .reveal{
