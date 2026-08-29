@@ -13,6 +13,6 @@ database_name = "abbas-aghebaty-bot"
 database_id = "df9f5c73-eedb-4352-bde6-5b8aea6167e0"    # بعد از ساخت دیتابیس با wrangler اینجا جایگزین کن
 
 
-# نکته: BOT_TOKEN یک Secret است و اینجا نوشته نمی‌شود.
+# نکته: BOT_TOKEN یک Secret است و اینجا نوشته نمی‌شود. 
 # با دستور زیر تنظیمش کن:
 #   wrangler secret put BOT_TOKEN 
