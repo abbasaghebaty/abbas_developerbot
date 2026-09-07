@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abbas Aghebati — Developer</title>
+  <meta name="description" content="Abbas Aghebati — JavaScript developer focused on web applications, backend systems, Telegram bots, and practical software projects.">
+  <meta name="theme-color" content="#080b12">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background" id="background" aria-hidden="true">
+    <span class="orb orb--one"></span>
+    <span class="orb orb--two"></span>
+    <span class="orb orb--three"></span>
+  </div>
+
+  <main class="container">
+    <header class="hero reveal">
+      <div class="avatar" aria-hidden="true">AA</div>
+      <p class="eyebrow">Developer · Builder · Problem Solver</p>
+      <h1 id="profileName">Abbas Aghebati</h1>
+      <p class="hero__headline">
+        I build practical web applications, backend systems and Telegram-based tools with JavaScript.
+      </p>
+      <p class="hero__typing" aria-live="polite">
+        <span id="typingText"></span><span class="typing-cursor" aria-hidden="true"></span>
+      </p>
+      <div class="skills" id="skills" aria-label="Core skills"></div>
+    </header>
+
+    <section class="clock-section reveal" aria-label="Current Tehran time">
+      <div class="section-label">Tehran</div>
+      <div class="clock" id="clock">
+        <span class="clock__digit">00</span>
+        <span class="clock__colon">:</span>
+        <span class="clock__digit">00</span>
+        <span class="clock__colon">:</span>
+        <span class="clock__digit">00</span>
+      </div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="linksTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Find me online</p>
+          <h2 id="linksTitle">Links</h2>
+        </div>
+      </div>
+      <div class="link-grid" id="links"></div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="projectsTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Things I build</p>
+          <h2 id="projectsTitle">Featured projects</h2>
+        </div>
+        <span class="section-count" id="projectCount"></span>
+      </div>
+      <div class="project-grid" id="projects"></div>
+    </section>
+
+    <section class="section reveal" aria-labelledby="statsTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">A little context</p>
+          <h2 id="statsTitle">At a glance</h2>
+        </div>
+      </div>
+      <div class="stats-grid" id="stats"></div>
+    </section>
+
+    <footer class="footer">
+      <p>Built by Abbas Aghebati · <span id="year"></span></p>
+      <p class="footer__muted">Last updated <span id="updated"></span></p>
+    </footer>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
