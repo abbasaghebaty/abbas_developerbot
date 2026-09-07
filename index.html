@@ -1,85 +1,111 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Abbas Aghebati — Developer</title>
-  <meta name="description" content="Abbas Aghebati — JavaScript developer focused on web applications, backend systems, Telegram bots, and practical software projects.">
-  <meta name="theme-color" content="#080b12">
-  <meta name="color-scheme" content="dark">
+  <meta name="description" content="ساخت سریع کپشن محصولات فروشگاه شما شاپ">
+  <title>ساخت کپشن فروشگاهی | شما شاپ</title>
   <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" as="style">
+  <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="background" id="background" aria-hidden="true">
-    <span class="orb orb--one"></span>
-    <span class="orb orb--two"></span>
-    <span class="orb orb--three"></span>
-  </div>
+  <header class="app-header">
+    <button class="theme-toggle-btn" id="themeToggle" type="button" title="تغییر تم">
+      <span id="themeIcon" aria-hidden="true">🌙</span><span id="themeLabel">تاریک</span>
+    </button>
+    <a href="https://abbasaghebaty.github.io/about-me/" target="_blank" rel="noopener noreferrer" class="made-by-link">Made by Abbas</a>
+  </header>
 
-  <main class="container">
-    <header class="hero reveal">
-      <div class="avatar" aria-hidden="true">AA</div>
-      <p class="eyebrow">Developer · Builder · Problem Solver</p>
-      <h1 id="profileName">Abbas Aghebati</h1>
-      <p class="hero__headline">
-        I build practical web applications, backend systems and Telegram-based tools with JavaScript.
-      </p>
-      <p class="hero__typing" aria-live="polite">
-        <span id="typingText"></span><span class="typing-cursor" aria-hidden="true"></span>
-      </p>
-      <div class="skills" id="skills" aria-label="Core skills"></div>
-    </header>
+  <main class="main-container">
+    <section class="form-section card" aria-labelledby="form-title">
+      <div class="section-title" id="form-title">اطلاعات محصول</div>
 
-    <section class="clock-section reveal" aria-label="Current Tehran time">
-      <div class="section-label">Tehran</div>
-      <div class="clock" id="clock">
-        <span class="clock__digit">00</span>
-        <span class="clock__colon">:</span>
-        <span class="clock__digit">00</span>
-        <span class="clock__colon">:</span>
-        <span class="clock__digit">00</span>
+      <div class="platform-buttons" id="platformButtons" aria-label="انتخاب پلتفرم خرید">
+        <button class="platform-btn active" type="button" data-platform="eitaa">ایتا</button>
+        <button class="platform-btn" type="button" data-platform="rubika">روبیکا</button>
+      </div>
+
+      <div class="form-grid">
+        <div class="input-group">
+          <label for="productName">نام محصول <span class="required-mark" title="اجباری">●</span></label>
+          <div class="input-wrapper" id="nameWrapper">
+            <input type="text" id="productName" placeholder="مثال: مایع ظرفشویی" autocomplete="off" maxlength="40" aria-describedby="nameHint nameError">
+            <button class="clear-field-btn" type="button" data-target="productName" tabindex="-1" title="پاک کردن" aria-label="پاک کردن نام محصول">×</button>
+          </div>
+          <div class="field-hint" id="nameHint">نام کوتاه یا یکی از میانبرها را وارد کنید؛ حداکثر ۴۰ کاراکتر.</div>
+          <div class="error-message" id="nameError" role="alert"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="price">قیمت <span class="required-mark" title="اجباری">●</span></label>
+          <div class="input-wrapper" id="priceWrapper">
+            <input type="text" id="price" inputmode="numeric" placeholder="مثال: ۴۵۰۰۰" autocomplete="off" aria-describedby="priceHint priceError">
+            <button class="clear-field-btn" type="button" data-target="price" tabindex="-1" title="پاک کردن" aria-label="پاک کردن قیمت">×</button>
+          </div>
+          <div class="field-hint" id="priceHint">فقط عدد وارد کنید؛ اعداد فارسی هم پذیرفته می‌شوند.</div>
+          <div class="error-message" id="priceError" role="alert"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="discountPrice">قیمت با تخفیف <span class="optional-mark">اختیاری</span></label>
+          <div class="input-wrapper" id="discountWrapper">
+            <input type="text" id="discountPrice" inputmode="numeric" placeholder="مثال: ۳۵۰۰۰" autocomplete="off" aria-describedby="discountHint discountError discountCompareError">
+            <button class="clear-field-btn" type="button" data-target="discountPrice" tabindex="-1" title="پاک کردن" aria-label="پاک کردن قیمت با تخفیف">×</button>
+          </div>
+          <div class="field-hint" id="discountHint">در صورت وارد کردن، باید از قیمت اصلی کمتر باشد.</div>
+          <div class="error-message" id="discountError" role="alert"></div>
+          <div class="error-message" id="discountCompareError" role="alert"></div>
+        </div>
+
+        <div class="input-group">
+          <label for="weight">وزن <span class="optional-mark">اختیاری</span></label>
+          <div class="input-wrapper"><input type="text" id="weight" placeholder="مثال: ۷۵۰ گرم" autocomplete="off"><button class="clear-field-btn" type="button" data-target="weight" tabindex="-1" title="پاک کردن" aria-label="پاک کردن وزن">×</button></div>
+        </div>
+        <div class="input-group">
+          <label for="quantity">تعداد <span class="optional-mark">اختیاری</span></label>
+          <div class="input-wrapper"><input type="text" id="quantity" placeholder="مثال: ۲ عدد" autocomplete="off"><button class="clear-field-btn" type="button" data-target="quantity" tabindex="-1" title="پاک کردن" aria-label="پاک کردن تعداد">×</button></div>
+        </div>
+        <div class="input-group">
+          <label for="scent">رایحه <span class="optional-mark">اختیاری</span></label>
+          <div class="input-wrapper"><input type="text" id="scent" placeholder="مثال: لیمو" autocomplete="off"><button class="clear-field-btn" type="button" data-target="scent" tabindex="-1" title="پاک کردن رایحه">×</button></div>
+        </div>
+        <div class="input-group">
+          <label for="customTitle">عنوان <span class="optional-mark">اختیاری</span></label>
+          <div class="input-wrapper"><input type="text" id="customTitle" placeholder="مثال: نوع" autocomplete="off"><button class="clear-field-btn" type="button" data-target="customTitle" tabindex="-1" title="پاک کردن عنوان">×</button></div>
+        </div>
+        <div class="input-group">
+          <label for="customValue">مقدار <span class="optional-mark">اختیاری</span></label>
+          <div class="input-wrapper"><input type="text" id="customValue" placeholder="مثال: نرم کننده" autocomplete="off"><button class="clear-field-btn" type="button" data-target="customValue" tabindex="-1" title="پاک کردن مقدار">×</button></div>
+        </div>
+
+        <details class="shortcut-guide">
+          <summary>راهنمای میانبرهای نام محصول</summary>
+          <ul class="shortcut-list" id="shortcutList"></ul>
+        </details>
+      </div>
+
+      <div class="action-buttons">
+        <button class="btn btn-outline" id="clearFormBtn" type="button">پاک کردن فرم</button>
       </div>
     </section>
 
-    <section class="section reveal" aria-labelledby="linksTitle">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Find me online</p>
-          <h2 id="linksTitle">Links</h2>
+    <section class="preview-section card" aria-labelledby="preview-title">
+      <div class="section-title" id="preview-title">پیش‌نمایش کپشن</div>
+      <div class="preview-box" id="previewOutput" contenteditable="true" role="textbox" aria-multiline="true" aria-label="پیش‌نمایش کپشن"></div>
+      <div class="preview-actions">
+        <div class="copy-row">
+          <button class="btn btn-primary" id="copyBtn" type="button">کپی کپشن</button>
+          <button class="btn btn-outline" id="clearOutputBtn" type="button">پاک کردن خروجی</button>
+          <span class="copy-feedback" id="copyFeedback" aria-live="polite"></span>
         </div>
       </div>
-      <div class="link-grid" id="links"></div>
     </section>
-
-    <section class="section reveal" aria-labelledby="projectsTitle">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">Things I build</p>
-          <h2 id="projectsTitle">Featured projects</h2>
-        </div>
-        <span class="section-count" id="projectCount"></span>
-      </div>
-      <div class="project-grid" id="projects"></div>
-    </section>
-
-    <section class="section reveal" aria-labelledby="statsTitle">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">A little context</p>
-          <h2 id="statsTitle">At a glance</h2>
-        </div>
-      </div>
-      <div class="stats-grid" id="stats"></div>
-    </section>
-
-    <footer class="footer">
-      <p>Built by Abbas Aghebati · <span id="year"></span></p>
-      <p class="footer__muted">Last updated <span id="updated"></span></p>
-    </footer>
   </main>
 
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <noscript>برای استفاده از کپشن‌ساز، JavaScript را در مرورگر فعال کنید.</noscript>
+  <script type="module" src="./js/app.js"></script>
 </body>
 </html>
