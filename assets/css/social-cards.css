@@ -1,0 +1,124 @@
+        /* ========================================
+             Social Cards Grid
+             ======================================== */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .social-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            border-radius: var(--radius);
+            padding: 1.4rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            color: var(--text);
+            transition: all var(--transition-smooth);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.6rem;
+            will-change: transform, box-shadow;
+            transform-style: preserve-3d;
+            perspective: 600px;
+        }
+
+        .social-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: inherit;
+            opacity: 0;
+            transition: opacity var(--transition-smooth);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .social-card:hover::before {
+            opacity: 1;
+        }
+
+        .social-card--instagram::before {
+            background: radial-gradient(circle at center, rgba(233, 68, 126, 0.22) 0%, transparent 70%);
+        }
+        .social-card--telegram::before {
+            background: radial-gradient(circle at center, rgba(0, 136, 204, 0.22) 0%, transparent 70%);
+        }
+        .social-card--telegram-channel::before {
+            background: radial-gradient(circle at center, rgba(0, 160, 220, 0.22) 0%, transparent 70%);
+        }
+        .social-card--bot::before {
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.24) 0%, transparent 70%);
+        }
+        .social-card--youtube::before {
+            background: radial-gradient(circle at center, rgba(255, 0, 0, 0.18) 0%, transparent 70%);
+        }
+        .social-card--github::before {
+            background: radial-gradient(circle at center, rgba(139, 148, 158, 0.18) 0%, transparent 70%);
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--border-glass-hover);
+            box-shadow: 0 14px 44px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.04);
+            background: var(--glass-bg-hover);
+        }
+
+        .social-card__icon {
+            width: 42px;
+            height: 42px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 1;
+            flex-shrink: 0;
+        }
+
+        .social-card__icon svg {
+            width: 28px;
+            height: 28px;
+            transition: transform var(--transition-fast);
+        }
+
+        .social-card:hover .social-card__icon svg {
+            transform: scale(1.1);
+        }
+
+        .social-card__name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            z-index: 1;
+            letter-spacing: -0.01em;
+        }
+
+        .social-card__desc {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            position: relative;
+            z-index: 1;
+        }
+
+        .social-card__arrow {
+            position: relative;
+            z-index: 1;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            transition: all var(--transition-fast);
+            opacity: 0;
+            transform: translateX(-8px);
+        }
+
+        .social-card:hover .social-card__arrow {
+            opacity: 1;
+            transform: translateX(0);
+            color: var(--blue);
+        }

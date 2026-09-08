@@ -1,0 +1,28 @@
+        /* ========================================
+             Main Container
+             ======================================== */
+        .main-container {
+            position: relative;
+            z-index: 1;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+        /* ========================================
+             Section Spacing
+             ======================================== */
+        .section {
+            margin-bottom: 4.5rem;
+        }
+
+        .section__title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.2rem;
+            background: linear-gradient(135deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }

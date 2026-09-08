@@ -1,0 +1,67 @@
+        /* ========================================
+             Skills Badges
+             ======================================== */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.55rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .skill-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.45rem 0.95rem;
+            border-radius: var(--radius-pill);
+            background: var(--glass-bg);
+            border: 1px solid var(--border-glass);
+            font-size: 0.78rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            letter-spacing: -0.01em;
+            white-space: nowrap;
+            transition: all var(--transition-fast);
+            cursor: default;
+            user-select: none;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .skill-badge:hover {
+            border-color: rgba(255, 255, 255, 0.25);
+            color: #fff;
+            background: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 0 18px rgba(59, 130, 246, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .skill-badge__dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .skill-badge__dot--blue {
+            background: var(--blue);
+            box-shadow: 0 0 6px var(--blue-glow);
+        }
+        .skill-badge__dot--purple {
+            background: var(--purple);
+            box-shadow: 0 0 6px var(--purple-glow);
+        }
+        .skill-badge__dot--teal {
+            background: #14b8a6;
+            box-shadow: 0 0 6px rgba(20, 184, 166, 0.5);
+        }
+        .skill-badge__dot--amber {
+            background: #f59e0b;
+            box-shadow: 0 0 6px rgba(245, 158, 11, 0.5);
+        }
+        .skill-badge__dot--rose {
+            background: #f43f5e;
+            box-shadow: 0 0 6px rgba(244, 63, 94, 0.5);
+        }

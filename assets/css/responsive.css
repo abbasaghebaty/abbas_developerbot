@@ -1,0 +1,132 @@
+        /* ========================================
+             Responsive Design
+             ======================================== */
+        @media (max-width: 768px) {
+            .hero__name {
+                font-size: 1.75rem;
+            }
+            .hero__avatar {
+                width: 90px;
+                height: 90px;
+                font-size: 2.2rem;
+            }
+            .hero__typing-wrapper {
+                font-size: 0.95rem;
+            }
+            .skills-container {
+                gap: 0.4rem;
+            }
+            .skill-badge {
+                font-size: 0.7rem;
+                padding: 0.35rem 0.7rem;
+            }
+            .clock__digit-wrapper {
+                width: 48px;
+                height: 70px;
+                border-radius: var(--radius-xs);
+            }
+            .clock__digit-span {
+                font-size: 2rem;
+            }
+            .clock__colon {
+                font-size: 1.7rem;
+            }
+            .clock {
+                gap: 3px;
+            }
+            .clock__pair {
+                gap: 2px;
+            }
+            .social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 0.7rem;
+            }
+            .social-card {
+                padding: 1rem 0.7rem;
+                gap: 0.4rem;
+            }
+            .social-card__icon {
+                width: 34px;
+                height: 34px;
+            }
+            .social-card__icon svg {
+                width: 22px;
+                height: 22px;
+            }
+            .social-card__name {
+                font-size: 0.82rem;
+            }
+            .social-card__desc {
+                font-size: 0.7rem;
+            }
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.7rem;
+            }
+            .stat-card__number {
+                font-size: 1.8rem;
+            }
+            .section {
+                margin-bottom: 3rem;
+            }
+            .section__title {
+                font-size: 1.25rem;
+                margin-bottom: 1.6rem;
+            }
+            .bg-orb--1 {
+                width: 250px;
+                height: 250px;
+            }
+            .bg-orb--2 {
+                width: 220px;
+                height: 220px;
+            }
+            .bg-orb--3 {
+                width: 180px;
+                height: 180px;
+            }
+            .bg-orb--4 {
+                width: 140px;
+                height: 140px;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .clock__digit-wrapper {
+                width: 38px;
+                height: 58px;
+                border-radius: 6px;
+            }
+            .clock__digit-span {
+                font-size: 1.55rem;
+            }
+            .clock__colon {
+                font-size: 1.3rem;
+                padding: 0 1px;
+            }
+            .clock {
+                gap: 2px;
+            }
+            .clock__pair {
+                gap: 1px;
+            }
+            .social-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+            }
+            .hero__name {
+                font-size: 1.4rem;
+            }
+            .hero__avatar {
+                width: 75px;
+                height: 75px;
+                font-size: 1.8rem;
+            }
+            .skill-badge {
+                font-size: 0.66rem;
+                padding: 0.3rem 0.55rem;
+            }
+        }
