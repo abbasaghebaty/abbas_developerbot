@@ -1,79 +1,372 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abbas Aghebaty — Dashboard</title>
-<meta name="description" content="Abbas Aghebaty — JavaScript Developer, Web Developer, Open Source Creator. Projects, repositories, skills and activity.">
-<meta name="theme-color" content="#0a0c11">
-<meta name="color-scheme" content="dark">
-<link rel="icon" type="image/png" href="favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+    <title>Abbas Aghebaty — Portfolio</title>
 
-<link rel="stylesheet" href="assets/css/tokens.css">
-<link rel="stylesheet" href="assets/css/base.css">
-<link rel="stylesheet" href="assets/css/layout.css">
-<link rel="stylesheet" href="assets/css/components.css">
-<link rel="stylesheet" href="assets/css/pages/overview.css">
-<link rel="stylesheet" href="assets/css/pages/about.css">
-<link rel="stylesheet" href="assets/css/pages/projects.css">
-<link rel="stylesheet" href="assets/css/pages/repositories.css">
-<link rel="stylesheet" href="assets/css/pages/skills.css">
-<link rel="stylesheet" href="assets/css/pages/links.css">
-<link rel="stylesheet" href="assets/css/pages/activity.css">
-<link rel="stylesheet" href="assets/css/responsive.css">
+    <meta name="description" content="Abbas Aghebaty — JavaScript Developer, Web Developer, Open Source Creator. Portfolio and social link hub.">
+    <meta name="theme-color" content="#0a0a0f">
+    <meta name="color-scheme" content="dark">
+
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <link rel="stylesheet" href="assets/css/variables.css">
+    <link rel="stylesheet" href="assets/css/base.css">
+    <link rel="stylesheet" href="assets/css/background-orbs.css">
+    <link rel="stylesheet" href="assets/css/layout.css">
+    <link rel="stylesheet" href="assets/css/hero.css">
+    <link rel="stylesheet" href="assets/css/skills.css">
+    <link rel="stylesheet" href="assets/css/flip-clock.css">
+    <link rel="stylesheet" href="assets/css/social-cards.css">
+    <link rel="stylesheet" href="assets/css/portfolio.css">
+    <link rel="stylesheet" href="assets/css/stats.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/reveal.css">
+    <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
 
-<div class="app">
-  <div class="sidebar-overlay" id="sidebar-overlay"></div>
-
-  <aside class="sidebar" id="sidebar">
-    <div class="sidebar__brand">
-      <div class="sidebar__mark">AA</div>
-      <div class="sidebar__brand-text">
-        <span class="sidebar__name" id="sidebar-name">Abbas Aghebaty</span>
-        <span class="sidebar__role" id="sidebar-role">Developer</span>
-      </div>
+    <!-- ========================================
+    Animated Background Orbs
+    ======================================== -->
+    <div class="bg-orbs" id="bgOrbs" aria-hidden="true">
+        <div class="bg-orb bg-orb--1"></div>
+        <div class="bg-orb bg-orb--2"></div>
+        <div class="bg-orb bg-orb--3"></div>
+        <div class="bg-orb bg-orb--4"></div>
     </div>
 
-    <nav class="sidebar__nav" id="sidebar-nav" aria-label="Main navigation"></nav>
+    <!-- ========================================
+    Main Content
+    ======================================== -->
+    <main class="main-container">
 
-    <div class="sidebar__footer">
-      <a href="https://github.com/abbasaghebaty" target="_blank" rel="noopener" aria-label="GitHub">
-        <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-      </a>
-      <a href="https://t.me/abbas_js" target="_blank" rel="noopener" aria-label="Telegram">
-        <svg viewBox="0 0 24 24"><path d="M21.5 3.5 2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"/></svg>
-      </a>
-      <a href="https://instagram.com/abbas.aghebaty" target="_blank" rel="noopener" aria-label="Instagram">
-        <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
-      </a>
+        <!-- Hero Section -->
+        <section class="hero section reveal" aria-label="Hero">
+            <div class="hero__avatar" aria-label="Abbas Aghebaty profile picture">
+                <span>AA</span>
+                <div class="hero__avatar-ring"></div>
+            </div>
+            <h1 class="hero__name">Abbas Aghebaty</h1>
+            <div class="hero__typing-wrapper" aria-live="polite">
+                <span class="hero__typing-text" id="typingText"></span>
+                <span class="hero__typing-cursor" aria-hidden="true"></span>
+            </div>
+
+            <!-- Skills Badges -->
+            <div class="skills-container reveal" aria-label="Skills">
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>JavaScript</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--amber"></span>HTML</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>CSS</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>Front-end Development</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Static Website Development</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>Telegram Bot Development</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>Telegram Mini Apps</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>UI Design</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--rose"></span>Thumbnail Artist</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--amber"></span>Photo Editing</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>Graphic Design</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Menu Design for Cafes & Restaurants</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--blue"></span>Open Source Projects</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--purple"></span>GitHub</span>
+                <span class="skill-badge"><span class="skill-badge__dot skill-badge__dot--teal"></span>Responsive Design</span>
+            </div>
+        </section>
+
+        <!-- Flip Clock Section — Tehran Time -->
+        <section class="clock-section section reveal" aria-label="Tehran live clock">
+            <p class="clock__label">Tehran Time</p>
+            <div class="clock" id="flipClock" aria-label="Current time in Tehran">
+                <!-- Hours -->
+                <div class="clock__pair">
+                    <div class="clock__digit-wrapper" data-digit="h0">
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
+                    </div>
+                    <div class="clock__digit-wrapper" data-digit="h1">
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="clock__colon" aria-hidden="true">:</span>
+                <!-- Minutes -->
+                <div class="clock__pair">
+                    <div class="clock__digit-wrapper" data-digit="m0">
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
+                    </div>
+                    <div class="clock__digit-wrapper" data-digit="m1">
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="clock__colon" aria-hidden="true">:</span>
+                <!-- Seconds -->
+                <div class="clock__pair">
+                    <div class="clock__digit-wrapper" data-digit="s0">
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
+                    </div>
+                    <div class="clock__digit-wrapper" data-digit="s1">
+                        <div class="clock__digit-track">
+                            <span class="clock__digit-span">0</span>
+                            <span class="clock__digit-span">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social Links Section -->
+        <section class="section reveal" aria-label="Social links">
+            <h2 class="section__title">Connect With Me</h2>
+            <div class="social-grid">
+                <!-- Instagram -->
+                <a href="https://instagram.com/abbas.aghebaty" target="_blank" rel="noopener noreferrer"
+                class="social-card social-card--instagram reveal reveal-delay-1">
+                <div class="social-card__icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+                    </svg>
+                </div>
+                <span class="social-card__name">Instagram</span>
+                <span class="social-card__desc">Daily updates</span>
+                <span class="social-card__arrow">→</span>
+            </a>
+            <!-- Telegram Channel -->
+            <a href="https://t.me/abbas.aghebaty" target="_blank" rel="noopener noreferrer"
+            class="social-card social-card--telegram-channel reveal reveal-delay-2">
+            <div class="social-card__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
+                </svg>
+            </div>
+            <span class="social-card__name">Channel</span>
+            <span class="social-card__desc">Telegram Channel</span>
+            <span class="social-card__arrow">→</span>
+        </a>
+        <!-- Telegram -->
+        <a href="https://t.me/abbas_js" target="_blank" rel="noopener noreferrer"
+        class="social-card social-card--telegram reveal reveal-delay-3">
+        <div class="social-card__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
+            </svg>
+        </div>
+        <span class="social-card__name">Telegram</span>
+        <span class="social-card__desc">Chat with me</span>
+        <span class="social-card__arrow">→</span>
+    </a>
+    <!-- YourClean Telegram Bot 
+    <a href="https://t.me/YourClean_bot" target="_blank" rel="noopener noreferrer"
+    class="social-card social-card--bot reveal reveal-delay-4">
+    <div class="social-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21.5 3.5L2.5 11l6 2.5M21.5 3.5l-5 17-4-8M21.5 3.5l-13 10 2.5 6"></path>
+        </svg>
     </div>
-  </aside>
-
-  <div class="content">
-    <header class="topbar">
-      <div class="topbar__left">
-        <button class="topbar__menu-btn" id="menu-toggle" aria-label="Toggle navigation">
-          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" fill="none" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        </button>
-        <span class="topbar__crumb" id="topbar-crumb">abbasaghebaty</span>
-        <span class="topbar__crumb" aria-hidden="true">/</span>
-        <span class="topbar__title" id="topbar-title">Overview</span>
-      </div>
-      <div class="topbar__right">
-        <span class="status-pill"><span class="status-pill__dot"></span>Available</span>
-        <span class="topbar__clock">Tehran <strong id="clock-value">00:00:00</strong></span>
-      </div>
-    </header>
-
-    <main id="content-outlet" class="content-outlet"></main>
-  </div>
+    <span class="social-card__name">YourClean Bot</span>
+    <span class="social-card__desc">Store Management Telegram Bot</span>
+    <span class="social-card__arrow">→</span>
+</a> -->
+    <!-- YouTube -->
+    <a href="https://youtube.com/@abbas.aghebaty" target="_blank" rel="noopener noreferrer"
+    class="social-card social-card--youtube reveal reveal-delay-5">
+    <div class="social-card__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="10 8 16 12 10 16 10 8" fill="currentColor" stroke="none"></polygon>
+            <rect x="1" y="4" width="22" height="16" rx="4" ry="4"></rect>
+        </svg>
+    </div>
+    <span class="social-card__name">YouTube</span>
+    <span class="social-card__desc">Video tutorials</span>
+    <span class="social-card__arrow">→</span>
+</a>
+<!-- GitHub -->
+<a href="https://github.com/abbasaghebaty" target="_blank" rel="noopener noreferrer"
+class="social-card social-card--github reveal reveal-delay-6">
+<div class="social-card__icon">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
+    </svg>
 </div>
+<span class="social-card__name">GitHub</span>
+<span class="social-card__desc">Open source projects</span>
+<span class="social-card__arrow">→</span>
+</a>
+</div>
+</section>
+
+<!-- Portfolio Section -->
+<section class="section reveal" aria-label="Portfolio projects" id="portfolioSection">
+    <h2 class="section__title">Featured Projects</h2>
+    <div class="portfolio-grid" id="portfolioGrid">
+
+        <!-- Project 1: Increase Photo Resolution -->
+        <article class="portfolio-card reveal reveal-delay-1" data-project>
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">🖼️</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Increase Photo Resolution</h3>
+                <p class="portfolio-card__desc">A lightweight web application that enhances image resolution with multiple upscale levels while maintaining a fast and responsive user experience.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Canvas API</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Image Processing</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Increase-photo-resolotion" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="https://abbasaghebaty.github.io/Increase-photo-resolotion/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Live Demo <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 2: Caption Generator -->
+        <article class="portfolio-card reveal reveal-delay-2" data-project>
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">✍️</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Caption Generator</h3>
+                <p class="portfolio-card__desc">An intelligent caption generation tool for Telegram shop owners with optimized formatting, emojis and category-based templates.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Telegram API</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Automation</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Caption-Generator" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="https://abbasaghebaty.github.io/Caption-Generator/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Live Demo <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 3: YourClean Telegram Bot -->
+        <article class="portfolio-card reveal reveal-delay-3" data-project>
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">🤖</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">YourClean Telegram Bot</h3>
+                <p class="portfolio-card__desc">A Telegram bot developed for store management, product lookup, customer interaction and quick access to shop information.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">Node.js</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">Telegram Bot API</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Store Management</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Yourclean-bot" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="https://t.me/YourClean_bot" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Open Bot <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 4: Shoma Shop Website -->
+        <article class="portfolio-card reveal reveal-delay-4" data-project>
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">🛍️</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Shoma Shop Website</h3>
+                <p class="portfolio-card__desc">A modern responsive website designed for a local shop featuring product showcases, contact information and optimized user experience.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">HTML</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">CSS</span>
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Responsive</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <a href="https://github.com/abbasaghebaty/Shoma.shop" class="portfolio-card__link" target="_blank" rel="noopener">
+                        GitHub <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                    <a href="http://shoma-shop.ir/" class="portfolio-card__link portfolio-card__link--demo" target="_blank" rel="noopener">
+                        Live Demo <span class="portfolio-card__link-arrow">→</span>
+                    </a>
+                </div>
+            </div>
+        </article>
+
+        <!-- Project 5: Personal Portfolio -->
+        <article class="portfolio-card reveal reveal-delay-5" data-project>
+            <div class="portfolio-card__image">
+                <div class="portfolio-card__image-placeholder">🚀</div>
+            </div>
+            <div class="portfolio-card__body">
+                <h3 class="portfolio-card__title">Personal Portfolio</h3>
+                <p class="portfolio-card__desc">My personal portfolio and launcher that brings together all of my social links, featured projects and development journey in one place.</p>
+                <div class="portfolio-card__tech">
+                    <span class="portfolio-card__tech-badge">HTML</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--purple">CSS</span>
+                    <span class="portfolio-card__tech-badge">JavaScript</span>
+                    <span class="portfolio-card__tech-badge portfolio-card__tech-badge--teal">Glassmorphism</span>
+                </div>
+                <div class="portfolio-card__actions">
+                    <span class="portfolio-card__link portfolio-card__link--secondary" style="cursor:default;opacity:0.7;">
+                        Current Website
+                    </span>
+                </div>
+            </div>
+        </article>
+    </div>
+</section>
+
+<!-- Statistics Section -->
+<section class="section reveal" aria-label="Statistics" id="statsSection">
+    <h2 class="section__title">By the Numbers</h2>
+    <div class="stats-grid">
+        <div class="stat-card reveal reveal-delay-1">
+            <div class="stat-card__number" id="statProjects">0</div>
+            <div class="stat-card__label">Projects</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-2">
+            <div class="stat-card__number" id="statRepos">--</div>
+            <div class="stat-card__label">Repositories</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-3">
+            <div class="stat-card__number" id="statExperience">0+</div>
+            <div class="stat-card__label">Years Experience</div>
+        </div>
+        <div class="stat-card reveal reveal-delay-4">
+            <div class="stat-card__number" id="statVisitors">--</div>
+            <div class="stat-card__label">Visitors</div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer reveal">
+    <p>Made with <span class="footer__heart">❤️</span> by Abbas Aghebaty — <span id="currentYear"></span></p>
+    <p class="footer__date">Last Updated: <span id="lastUpdated"></span></p>
+</footer>
+
+</main>
 
 <script type="module" src="assets/js/main.js"></script>
 </body>
