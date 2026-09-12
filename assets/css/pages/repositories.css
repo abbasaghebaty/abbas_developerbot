@@ -1,0 +1,38 @@
+.repo-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.repo-name-cell svg {
+  width: 14px;
+  height: 14px;
+  stroke: var(--text-tertiary);
+  fill: none;
+  stroke-width: 1.8;
+  flex-shrink: 0;
+}
+
+.repo-lang-cell {
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+}
+
+.source-note {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  margin-top: var(--sp-3);
+}
+
+.source-note__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.source-note__dot--live { background: var(--success); box-shadow: 0 0 0 3px var(--success-soft); }
+.source-note__dot--cached { background: var(--warning); box-shadow: 0 0 0 3px var(--warning-soft); }

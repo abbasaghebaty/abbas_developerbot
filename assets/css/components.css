@@ -1,0 +1,290 @@
+/* ==========================================================================
+   Components
+   ========================================================================== */
+
+/* ---------- Panel / Card ---------- */
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--sp-4);
+}
+
+/* ---------- Stat card ---------- */
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: var(--sp-4);
+}
+
+.stat-card {
+  background: var(--panel);
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  padding: var(--sp-5);
+}
+
+.stat-card__label {
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  margin-bottom: var(--sp-2);
+}
+
+.stat-card__value {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.stat-card__sub {
+  margin-top: var(--sp-1);
+  font-size: var(--fs-2xs);
+  color: var(--text-tertiary);
+}
+
+/* ---------- Tags / badges ---------- */
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: var(--surface-raised);
+  border: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+}
+
+.tag__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tag--blue .tag__dot { background: var(--tag-blue); }
+.tag--amber .tag__dot { background: var(--tag-amber); }
+.tag--purple .tag__dot { background: var(--tag-purple); }
+.tag--teal .tag__dot { background: var(--tag-teal); }
+.tag--rose .tag__dot { background: var(--tag-rose); }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 8px 14px;
+  border-radius: var(--r-sm);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  transition: border-color var(--transition), color var(--transition), background var(--transition);
+}
+
+.btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-tertiary);
+}
+
+.btn--primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn--primary:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: #fff;
+}
+
+.btn svg {
+  width: 14px;
+  height: 14px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+}
+
+.view-toggle {
+  display: inline-flex;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-sm);
+  overflow: hidden;
+}
+
+.view-toggle__btn {
+  padding: 7px 12px;
+  font-size: var(--fs-xs);
+  color: var(--text-tertiary);
+  background: var(--surface-raised);
+}
+
+.view-toggle__btn.is-active {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+.view-toggle__btn + .view-toggle__btn {
+  border-left: 1px solid var(--border-soft);
+}
+
+/* ---------- Table ---------- */
+.data-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--r-lg);
+  background: var(--panel);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-sm);
+  min-width: 560px;
+}
+
+.data-table thead th {
+  text-align: left;
+  font-size: var(--fs-2xs);
+  text-transform: none;
+  color: var(--text-tertiary);
+  font-weight: 500;
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border-soft);
+  white-space: nowrap;
+}
+
+.data-table tbody td {
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text-secondary);
+  vertical-align: middle;
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table tbody tr {
+  transition: background var(--transition);
+}
+
+.data-table tbody tr:hover {
+  background: var(--panel-hover);
+}
+
+.data-table .cell-primary {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.data-table .cell-mono {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--text-secondary);
+}
+
+/* ---------- Language dot (for repo language) ---------- */
+.lang-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-inline-end: 6px;
+  flex-shrink: 0;
+}
+
+/* ---------- Empty / loading / error states ---------- */
+.state-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-2);
+  padding: var(--sp-7) var(--sp-5);
+  color: var(--text-tertiary);
+  font-size: var(--fs-sm);
+}
+
+.state-block__title {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.skeleton {
+  background: linear-gradient(90deg, var(--surface-raised) 25%, var(--panel-hover) 37%, var(--surface-raised) 63%);
+  background-size: 400% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+  border-radius: var(--r-sm);
+}
+
+@keyframes skeleton-loading {
+  0% { background-position: 100% 50%; }
+  100% { background-position: 0 50%; }
+}
+
+/* ---------- Timeline (About page) ---------- */
+.timeline {
+  position: relative;
+  padding-inline-start: var(--sp-6);
+  border-inline-start: 1px solid var(--border-soft);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-6);
+}
+
+.timeline__item {
+  position: relative;
+}
+
+.timeline__item::before {
+  content: "";
+  position: absolute;
+  left: calc(-1 * var(--sp-6) - 4.5px);
+  top: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+.timeline__period {
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+
+.timeline__title {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.timeline__desc {
+  color: var(--text-secondary);
+  font-size: var(--fs-sm);
+  max-width: 62ch;
+}
+
+/* ---------- Two column layout helper ---------- */
+.split-2 {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: var(--sp-6);
+  align-items: start;
+}
+
+@media (max-width: 860px) {
+  .split-2 {
+    grid-template-columns: 1fr;
+  }
+}

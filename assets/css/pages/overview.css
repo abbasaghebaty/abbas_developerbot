@@ -1,0 +1,122 @@
+.hero-panel {
+  padding: var(--sp-7);
+  display: flex;
+  gap: var(--sp-6);
+  align-items: center;
+}
+
+.hero-panel__avatar {
+  width: 76px;
+  height: 76px;
+  flex-shrink: 0;
+  border-radius: var(--r-lg);
+  background: linear-gradient(155deg, var(--accent) 0%, #7c5cf2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: var(--fs-lg);
+  color: #fff;
+}
+
+.hero-panel__name {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+.hero-panel__role {
+  margin-top: 4px;
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+}
+
+.hero-panel__bio {
+  margin-top: var(--sp-3);
+  color: var(--text-secondary);
+  max-width: 60ch;
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 640px) {
+  .hero-panel {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+}
+
+.quick-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.quick-list__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border-soft);
+  font-size: var(--fs-sm);
+}
+
+.quick-list__row:last-child {
+  border-bottom: none;
+}
+
+.quick-list__label {
+  color: var(--text-secondary);
+}
+
+.quick-list__value {
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+}
+
+.quick-list__row a.quick-list__value {
+  color: var(--accent);
+}
+
+.overview-feed {
+  display: flex;
+  flex-direction: column;
+}
+
+.overview-feed__row {
+  display: flex;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border-soft);
+  font-size: var(--fs-sm);
+}
+.overview-feed__row:last-child { border-bottom: none; }
+
+.overview-feed__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--success);
+  margin-top: 7px;
+  flex-shrink: 0;
+}
+
+.overview-feed__text {
+  color: var(--text-secondary);
+}
+.overview-feed__text strong {
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.overview-feed__time {
+  margin-inline-start: auto;
+  color: var(--text-tertiary);
+  font-family: var(--font-mono);
+  font-size: var(--fs-2xs);
+  white-space: nowrap;
+}
